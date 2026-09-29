@@ -1,0 +1,9 @@
+node_modules
+.env
+.git
+coverage
+*.log
+backend/vendor
+backend/composer.phar
+backend/public/app
+runtime

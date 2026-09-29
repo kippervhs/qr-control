@@ -1,0 +1,463 @@
+{
+  "nextCode": 71,
+  "batches": [
+    {
+      "id": "7e050c70-367f-42c5-a3c3-9ef6ae7ca635",
+      "startCode": 16,
+      "endCode": 20,
+      "quantity": 5,
+      "createdAt": "2026-09-16 15:33:24.589000",
+      "qrCodes": [
+        {
+          "id": "ff195572-cd27-4039-8fa3-d428ebb68ce8",
+          "code": 16,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:33:24.596000",
+          "updatedAt": "2026-09-16 15:33:24.596000"
+        },
+        {
+          "id": "698e0a28-ae0e-4356-b653-dcd8b749ec36",
+          "code": 17,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:33:24.596000",
+          "updatedAt": "2026-09-16 15:33:24.596000"
+        },
+        {
+          "id": "aede8245-b428-459a-a0db-60ef31c01ce5",
+          "code": 18,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:33:24.596000",
+          "updatedAt": "2026-09-16 15:33:24.596000"
+        },
+        {
+          "id": "62d981ff-9652-43fb-82f7-184316ccee8e",
+          "code": 19,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:33:24.596000",
+          "updatedAt": "2026-09-16 15:33:24.596000"
+        },
+        {
+          "id": "e0fd222e-2d8d-4989-81f9-7d4cc1651bfc",
+          "code": 20,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:33:24.596000",
+          "updatedAt": "2026-09-16 15:33:24.596000"
+        }
+      ]
+    },
+    {
+      "id": "46b37a6a-33ca-47c3-a06d-ff363de5f07e",
+      "startCode": 21,
+      "endCode": 70,
+      "quantity": 50,
+      "createdAt": "2026-09-16 15:49:02.563000",
+      "qrCodes": [
+        {
+          "id": "3422eefa-048e-4714-9c29-a26380174faa",
+          "code": 21,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "90485941-4330-4f06-bf9b-ce2731f3d534",
+          "code": 22,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "5a9093f0-e500-4fc7-9132-a4e0bf80d00d",
+          "code": 23,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "dff728e6-395b-4ffe-84ea-64499f7b9a71",
+          "code": 24,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "86c42bd4-71c4-4b86-95d9-fa34f9be842a",
+          "code": 25,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "bf8e0f2a-38e8-4c7f-828a-7ea2a0c72220",
+          "code": 26,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "39ad3ce0-98c6-443b-aed5-9960f4d901f3",
+          "code": 27,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "5bb3b023-70c5-4989-912c-8ee04772467c",
+          "code": 28,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "a4668ec6-c726-4c6f-84f1-f2d6ab5827c2",
+          "code": 29,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "737575bc-2880-4449-9bf0-812c9b3fc0c9",
+          "code": 30,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "c4a89d4a-9abb-4e63-8263-c7c0b089980e",
+          "code": 31,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "b5b41ffb-091b-4d18-9726-bc30f678ef32",
+          "code": 32,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "5b31e713-259e-4ee3-9033-92ba9fabb420",
+          "code": 33,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "be3682ef-7463-40b8-97c8-29480e314a88",
+          "code": 34,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "db3a0dfa-9d14-46e0-b9b3-b72e27d48310",
+          "code": 35,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "7baa468d-8755-4ce0-9d44-540ae78dc078",
+          "code": 36,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "0fefd054-178f-4e2d-8d85-23a9041d299e",
+          "code": 37,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "3219113a-5677-4d1a-9d37-f0307ba54765",
+          "code": 38,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "6ba789bd-13ca-4b07-bacc-9c9dfd62fc3b",
+          "code": 39,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "da56cc7b-811c-413a-9874-abd73dfa5add",
+          "code": 40,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "6b830949-6ab5-4699-b948-28f31e0201d3",
+          "code": 41,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "a151070a-d635-4019-a766-b4cd9c6bf578",
+          "code": 42,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "64ec9f1f-c934-4244-90c4-b52d1f89ce55",
+          "code": 43,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "151f5d32-512a-43a5-bb8c-37336f4d23db",
+          "code": 44,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "029de933-fdb7-4b99-adad-dea175535af7",
+          "code": 45,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "223ab599-80e5-4fc8-b9f8-b582c1c1925e",
+          "code": 46,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "dd229eba-e88f-4e90-91a5-ac3a57be0bdd",
+          "code": 47,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "d0c468a5-24a3-4347-926a-6a7194ca6be5",
+          "code": 48,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "f0396410-4232-4fe1-afe2-56fc59b72984",
+          "code": 49,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "eceacdc9-3b7c-46b1-bbc5-b1737a2c30f1",
+          "code": 50,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "2b50ecad-0179-49e1-9273-0a65f95b21fe",
+          "code": 51,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "83d15a52-23c0-4fc2-9100-8e39e765c22b",
+          "code": 52,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "1d4092cb-615b-419a-845c-7920ca4c9802",
+          "code": 53,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "00351263-8333-44c8-bb89-4c0613cc712d",
+          "code": 54,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "25dcb699-dd7c-4a64-8727-4b1c2c7b4b2d",
+          "code": 55,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "e9ef2ad2-5c1a-461a-bb1b-e0299dcd0820",
+          "code": 56,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "c0c5f685-55e3-4a3f-8306-aa8361c29e01",
+          "code": 57,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "a650f536-46f7-4d6e-8de8-e649ee7f37eb",
+          "code": 58,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "4e0e55c2-a1be-4a7c-8d87-3275d74618fc",
+          "code": 59,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "90092378-a45e-4432-a043-8e2f359c064d",
+          "code": 60,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "e0732610-e084-45b9-ab9e-b2b8fe44b08a",
+          "code": 61,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "83aa8efe-3530-4ef0-90ea-f001bbf1db9e",
+          "code": 62,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "f16520f0-c203-4060-8f89-ce3bf774623f",
+          "code": 63,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "eb1b47c6-866e-4424-aaf3-95134dd724f9",
+          "code": 64,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "682ec897-b1a7-483f-8a3f-7da7b3a96ce3",
+          "code": 65,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "63b7cb54-42d7-4674-be12-ae4dac7a050b",
+          "code": 66,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "2fb7a360-3b2e-4f3e-baee-c64577aaa1a9",
+          "code": 67,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "fb9fb501-464e-41bf-b294-55f19be45f1c",
+          "code": 68,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "fbe2ef22-6634-41c6-bad5-2a7ff66ed2b6",
+          "code": 69,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        },
+        {
+          "id": "0a6f9af3-76f6-4958-9463-ea61f49c4d7f",
+          "code": 70,
+          "destinationUrl": null,
+          "active": true,
+          "createdAt": "2026-09-16 15:49:02.567000",
+          "updatedAt": "2026-09-16 15:49:02.567000"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "aztro/qr-control-api",
+  "description": "API PHP portável para gerenciamento de QR Codes dinâmicos",
+  "license": "proprietary",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-gd": "*",
+    "endroid/qr-code": "^6.0",
+    "maennchen/zipstream-php": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "QrControl\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "scripts": { "test": "php tests/run.php" }
+}

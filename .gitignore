@@ -1,0 +1,12 @@
+node_modules/
+backend/vendor/
+backend/public/app/
+backend/composer.phar
+runtime/mysql-data/
+runtime/mysql/my.ini
+runtime/php.ini
+.env
+.env.local
+coverage/
+*.log
+.sites-runtime/
