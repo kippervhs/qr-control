@@ -1,5 +1,6 @@
 export type UserRole = "admin" | "vendedor" | "manutencao";
-export type Session = { authenticated: boolean; username: string | null; role: UserRole | null; csrfToken: string };
+export type Subscription = { status: string; active: boolean; currentPeriodEnd: string | null; checkoutUrl: string | null };
+export type Session = { authenticated: boolean; username: string | null; role: UserRole | null; csrfToken: string; subscription?: Subscription };
 
 let csrfToken = "";
 

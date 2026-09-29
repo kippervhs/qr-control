@@ -32,7 +32,14 @@ final class Auth
             $_SESSION = ['csrf' => bin2hex(random_bytes(32))];
             return ['authenticated' => false, 'username' => null, 'role' => null, 'csrfToken' => $_SESSION['csrf']];
         }
-        return ['authenticated' => true, 'username' => $user['username'], 'role' => $user['role'], 'csrfToken' => $_SESSION['csrf']];
+        $subscription = SubscriptionService::statusForCurrentUser();
+        return [
+            'authenticated' => true,
+            'username' => $user['username'],
+            'role' => $user['role'],
+            'csrfToken' => $_SESSION['csrf'],
+            'subscription' => $subscription,
+        ];
     }
 
     public static function requireAdmin(): void
@@ -63,7 +70,7 @@ final class Auth
     {
         self::startSession();
         if (!isset($_SESSION['user_id'])) return null;
-        $query = Database::connection()->prepare('SELECT id, username, code_prefix, role, active FROM users WHERE id = ? LIMIT 1');
+        $query = Database::connection()->prepare('SELECT id, username, email, full_name, code_prefix, role, active FROM users WHERE id = ? LIMIT 1');
         $query->execute([$_SESSION['user_id']]);
         $user = $query->fetch();
         if (!$user || !(bool) $user['active']) return null;
@@ -137,6 +144,51 @@ final class Auth
         $_SESSION['admin'] = (string) $user['username'];
         $_SESSION['user_prefix'] = $prefix;
         $_SESSION['role'] = (string) $user['role'];
+        $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        return self::session();
+    }
+
+    public static function register(array $body): array
+    {
+        self::requireCsrf();
+        $username = is_string($body['username'] ?? null) ? trim($body['username']) : '';
+        $email = is_string($body['email'] ?? null) ? strtolower(trim($body['email'])) : '';
+        $name = is_string($body['name'] ?? null) ? trim($body['name']) : '';
+        $password = is_string($body['password'] ?? null) ? $body['password'] : '';
+
+        if (!preg_match('/^[A-Za-z0-9_]{3,100}$/', $username)) throw new HttpException(400, 'Usuário: use de 3 a 100 caracteres, apenas letras, números e _.');
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 254) throw new HttpException(400, 'Informe um e-mail válido.');
+        if ($name === '' || strlen($name) > 160) throw new HttpException(400, 'Informe seu nome.');
+        if (strlen($password) < 8 || strlen($password) > 200) throw new HttpException(400, 'A senha precisa ter entre 8 e 200 caracteres.');
+
+        $username = strtolower($username);
+        $prefix = self::prefixFromUsername($username);
+        $pdo = Database::connection();
+
+        try {
+            $pdo->beginTransaction();
+            $pdo->prepare('INSERT INTO users (id, username, email, full_name, code_prefix, role, password_hash, active) VALUES (UUID(), ?, ?, ?, ?, ?, ?, 1)')
+                ->execute([$username, $email, $name, $prefix, 'vendedor', password_hash($password, PASSWORD_DEFAULT)]);
+            $query = $pdo->prepare('SELECT id FROM users WHERE username = ? LIMIT 1');
+            $query->execute([$username]);
+            $userId = (string) $query->fetchColumn();
+            if ($userId === '') throw new \RuntimeException('Não foi possível criar a conta.');
+            $pdo->prepare('INSERT INTO subscriptions (id, user_id, status) VALUES (UUID(), ?, ?)')
+                ->execute([$userId, 'PENDING']);
+            $pdo->commit();
+        } catch (\Throwable $error) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
+            if ($error instanceof \PDOException && (string) ($error->errorInfo[1] ?? '') === '1062') {
+                throw new HttpException(409, 'Usuário, e-mail ou prefixo de QR Code já está em uso.');
+            }
+            throw $error;
+        }
+
+        session_regenerate_id(true);
+        $_SESSION['user_id'] = $userId;
+        $_SESSION['admin'] = $username;
+        $_SESSION['user_prefix'] = $prefix;
+        $_SESSION['role'] = 'vendedor';
         $_SESSION['csrf'] = bin2hex(random_bytes(32));
         return self::session();
     }

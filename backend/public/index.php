@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use QrControl\Auth;
 use QrControl\BatchService;
+use QrControl\SubscriptionService;
 use QrControl\Config;
 use QrControl\HttpException;
 use QrControl\QrImageService;
@@ -84,6 +85,18 @@ function qrStatusPage(string $title, string $message, int $status): never
 try {
     if ($path === '/api/auth/session' && $method === 'GET') jsonResponse(Auth::session());
     if ($path === '/api/auth/login' && $method === 'POST') jsonResponse(Auth::login(Support::jsonBody()));
+    if ($path === '/api/auth/register' && $method === 'POST') jsonResponse(Auth::register(Support::jsonBody()), 201);
+
+    if ($path === '/api/webhooks/asaas' && $method === 'POST') {
+        $configuredToken = Config::get('ASAAS_WEBHOOK_TOKEN');
+        $receivedToken = (string) ($_SERVER['HTTP_ASAAS_ACCESS_TOKEN'] ?? '');
+        if ($configuredToken === '' || !hash_equals($configuredToken, $receivedToken)) {
+            throw new HttpException(401, 'Webhook não autorizado.');
+        }
+        SubscriptionService::registerWebhook(Support::jsonBody());
+        jsonResponse(['ok' => true]);
+    }
+
     if ($path === '/api/auth/logout' && $method === 'POST') {
         Auth::logout();
         jsonResponse(['ok' => true]);
@@ -114,6 +127,11 @@ try {
     if (str_starts_with($path, '/api/')) {
         Auth::requireAdmin();
         if (!in_array($method, ['GET', 'HEAD'], true)) Auth::requireCsrf();
+
+        if ($path === '/api/billing/status' && $method === 'GET') jsonResponse(SubscriptionService::statusForCurrentUser());
+        if ($path === '/api/billing/checkout' && $method === 'POST') jsonResponse(SubscriptionService::createCheckoutForCurrentUser());
+
+        SubscriptionService::requireActive();
 
         if (str_starts_with($path, '/api/users')) Auth::requireUserManager();
         elseif (str_starts_with($path, '/api/batches') || str_starts_with($path, '/api/qrcodes')) Auth::requireQrManager();

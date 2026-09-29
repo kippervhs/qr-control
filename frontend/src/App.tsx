@@ -5,6 +5,8 @@ import {
 } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { api, download, Session, setCsrfToken } from "./api";
+import SubscriptionPage from "./SubscriptionPage";
+import SignupPage from "./SignupPage";
 import { normalizeCode, safeNextPath } from "./logic";
 import type { Batch, BatchPage, QrCode } from "./types";
 import Dock from "./Dock";
@@ -91,6 +93,7 @@ function LoginPage({ onLogin }: { onLogin: (session: Session) => void }) {
         {error && <p role="alert" className="rounded-[16px] bg-[#f5c9c6] px-3 py-2.5 text-sm font-bold text-[#8f1f18]">{error}</p>}
         <button disabled={loading} className="action-label pressable flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-4 font-black uppercase text-black disabled:opacity-60">{loading ? "Entrando..." : "Entrar"}<ArrowRight aria-hidden="true" size={19} weight="bold" /></button>
       </form>
+      <button type="button" onClick={() => navigate("/signup")} className="mt-4 min-h-11 w-full rounded-full border-2 border-[#777] px-4 font-black uppercase text-sm">Criar conta</button>
     </section>
   </main>;
 }
@@ -241,4 +244,51 @@ function RegisterPage({code}:{code:string}){const[qr,setQr]=useState<QrCode|null
 
 function NotFound(){return <section className="mx-auto mt-20 max-w-md rounded-[28px] bg-[var(--surface)] p-8 text-center text-black"><h1 className="text-3xl font-black uppercase">Página não encontrada</h1><Link href="/" className="mt-6 inline-flex rounded-full bg-[var(--accent)] px-6 py-3 font-black uppercase">Voltar ao painel</Link></section>}
 
-export default function App(){const location=useLocation();const[session,setSession]=useState<Session|null>(null);const path=window.location.pathname;useEffect(()=>{const refresh=()=>api<Session>('/api/auth/session').then(s=>{setCsrfToken(s.csrfToken);setSession(s)}).catch(()=>setSession({authenticated:false,username:null,role:null,csrfToken:''}));refresh();window.addEventListener('qr:unauthorized',refresh);return()=>window.removeEventListener('qr:unauthorized',refresh)},[]);useEffect(()=>{if(!session)return;if(path==='/login'&&session.authenticated)navigate('/',true);else if(path!=='/login'&&!session.authenticated)navigate(`/login?next=${encodeURIComponent(location)}`,true);else if(session.role==='manutencao'&&path!=='/users')navigate('/users',true);else if(session.role==='vendedor'&&path==='/users')navigate('/',true)},[location,path,session]);if(!session)return <Loading/>;if(path==='/login')return session.authenticated?null:<LoginPage onLogin={setSession}/>;if(!session.authenticated)return null;async function logout(){try{await api('/api/auth/logout',{method:'POST'});setSession({authenticated:false,username:null,role:null,csrfToken:''});navigate('/login',true)}catch(e){toast.error(e instanceof Error?e.message:'Falha ao sair.')}}let content:ReactNode;if(path==='/')content=<Dashboard/>;else if(path==='/users' && (session.role==='admin' || session.role==='manutencao'))content=<UsersPage actorRole={session.role}/>;else if(/^\/batches\/([0-9a-f-]+)$/i.test(path))content=<BatchDetails id={path.split('/')[2]}/>;else if(/^\/codes\/([A-Za-z0-9-]+)$/.test(path))content=<QrDetails code={path.split('/')[2]}/>;else if(/^\/register\/([A-Za-z0-9-]+)$/.test(path))content=<RegisterPage code={path.split('/')[2]}/>;else content=<NotFound/>;return <AppShell username={session.username ?? ""} role={session.role} onLogout={logout}>{content}</AppShell>}
+export default function App(){
+  const location=useLocation();
+  const[session,setSession]=useState<Session|null>(null);
+  const path=window.location.pathname;
+
+  useEffect(()=>{
+    const refresh=()=>api<Session>('/api/auth/session')
+      .then(s=>{setCsrfToken(s.csrfToken);setSession(s)})
+      .catch(()=>setSession({authenticated:false,username:null,role:null,csrfToken:''}));
+    refresh();
+    window.addEventListener('qr:unauthorized',refresh);
+    return()=>window.removeEventListener('qr:unauthorized',refresh);
+  },[]);
+
+  useEffect(()=>{
+    if(!session)return;
+    if(path==='/login'&&!session.authenticated){return;}
+    if(path==='/signup'&&!session.authenticated){return;}
+    if(!session.authenticated){navigate(`/login?next=${encodeURIComponent(location)}`,true);return;}
+    const subscriptionActive=session.role==='admin'||Boolean(session.subscription?.active);
+    if(!subscriptionActive&&path!=='/subscription'){navigate('/subscription',true);return;}
+    if(subscriptionActive&&path==='/subscription'){navigate('/',true);return;}
+    if(session.role==='manutencao'&&path!=='/users')navigate('/users',true);
+    else if(session.role==='vendedor'&&path==='/users')navigate('/',true);
+  },[location,path,session]);
+
+  if(!session)return <Loading/>;
+  if(path==='/login')return session.authenticated?null:<LoginPage onLogin={setSession}/>;
+  if(path==='/signup')return session.authenticated?null:<SignupPage onCreated={setSession} onBack={()=>navigate('/login')}/>;
+  if(!session.authenticated)return null;
+
+  async function logout(){
+    try{await api('/api/auth/logout',{method:'POST'});setSession({authenticated:false,username:null,role:null,csrfToken:''});navigate('/login',true)}
+    catch(e){toast.error(e instanceof Error?e.message:'Falha ao sair.')}
+  }
+
+  const subscriptionActive=session.role==='admin'||Boolean(session.subscription?.active);
+  if(!subscriptionActive)return <SubscriptionPage subscription={session.subscription!} onRefresh={async()=>{const s=await api<Session>('/api/auth/session');setCsrfToken(s.csrfToken);setSession(s)}}/>;
+
+  let content:ReactNode;
+  if(path==='/')content=<Dashboard/>;
+  else if(path==='/users'&&(session.role==='admin'||session.role==='manutencao'))content=<UsersPage actorRole={session.role}/>;
+  else if(/^\/batches\/([0-9a-f-]+)$/i.test(path))content=<BatchDetails id={path.split('/')[2]}/>;
+  else if(/^\/codes\/([A-Za-z0-9-]+)$/.test(path))content=<QrDetails code={path.split('/')[2]}/>;
+  else if(/^\/register\/([A-Za-z0-9-]+)$/.test(path))content=<RegisterPage code={path.split('/')[2]}/>;
+  else content=<NotFound/>;
+  return <AppShell username={session.username??""} role={session.role} onLogout={logout}>{content}</AppShell>;
+}
